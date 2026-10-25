@@ -1,0 +1,666 @@
+:root {
+    --fondo: #fbf7f5;
+    --texto: #3a3033;
+    --texto-suave: #7a6a70;
+    --acento: #d98a9b;
+    --vidrio: rgba(255, 255, 255, 0.55);
+    --borde-vidrio: rgba(255, 255, 255, 0.7);
+    --radio: 16px;
+    --fuente-texto: "Inter", sans-serif;
+    --fuente-titulo: "Cormorant Garamond", serif;
+}
+
+/* Estilos generales*/
+
+body {
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(217, 138, 155, 0.35), transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(216, 226, 220, 0.6), transparent 45%),
+        var(--fondo);
+    background-attachment: fixed;
+    color:  var(--texto);
+    font-family: var(--fuente-texto);
+    margin:0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+.vidrio {
+    background: var(--vidrio);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--borde-vidrio);
+    box-shadow: 0 8px 24px rgba(60, 40, 50, 0.08);
+    border-radius: var(--radio);
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulo), sans-serif;
+    font-weight: 600;
+}
+
+/* Separa el contenido de los bordes */
+main {
+    padding: 32px;
+}
+
+
+/* Bienvenida de Atelier Rosa */
+.bienvenida {
+    padding: 45px 30px;
+    margin: 25px;
+    text-align: center;
+    
+}
+
+.etiqueta-bienvenida {
+    color: var(--texto-suave);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+}
+
+.bienvenida h1 {
+    color: var(--texto);
+    font-size: clamp(30px, 4vw, 40px);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0 auto 16px;
+    text-align: center;
+}
+
+.texto-bienvenida {
+max-width: 600px;
+margin: 0 auto 25px;
+font-size: 17px;
+color: var(--texto-suave);
+}
+
+.boton-bienvenida {
+transition: background-color 0.3s ease,
+transform 0.3s ease;
+}
+
+.boton-bienvenida:hover {
+background-color: var(--acento);
+}
+
+@media (max-width: 500px) {
+.bienvenida {
+padding: 30px 18px;
+margin: 15px 10px;
+}
+}
+
+
+/* Encabezado de la tienda */
+.encabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: var(--vidrio);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--borde-vidrio);
+    padding: 18px 30px;
+    box-shadow: 0 4px 20px rgba(60, 40, 50, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-bottom: 20px;
+
+
+}
+
+/* Quitamos el margen del título */
+.encabezado .logo{
+    margin: 0;
+    font-size: 28px;
+    font-family: var(--fuente-titulo);
+
+}
+
+/* Separamos los enlaces del menú */
+.encabezado nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Estilo de los enlaces */
+.encabezado a{
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+/* Estilo cuando pasamos el cursor */
+.encabezado a:hover {
+    color:var(--texto-suave);
+
+}
+
+/* Estilo de los párrafos */
+p{
+    font-size: 16px;
+}
+
+/* Rejilla donde colocaremos los productos */
+.rejilla-productos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 20px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Adapta las tarjetas al ancho de la pantalla */
+@media (max-width: 750px) {
+    .rejilla-productos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* Para pantallas pequeñas, como los móviles */
+@media (max-width:500px) {
+    .rejilla-productos{
+        grid-template-columns: 1fr;
+    }
+    
+    .producto{
+        padding: 15px;
+    }
+}
+
+
+/* Estilo de cada tarjeta */
+.producto {
+    padding: 24px;
+    border-radius: var(--radio);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* La tarjeta sube un poco al pasar el cursor */
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(60, 40, 50, 0.12);
+}
+
+
+
+/* Título de cada producto */
+.producto h3 {
+    color: var(--texto);
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.producto p{
+    font-size: 15px;
+    margin: 8px 0;
+}
+
+/* Etiqueta para productos disponibles */
+.disponible {
+    background-color: rgba(120, 170, 140, 0.2);
+    color: #3f6b52;
+}
+
+
+.disponible,
+.bajo,
+.agotado {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight:  500;
+}
+/* Etiqueta para productos con stock bajo */
+.bajo {
+    background-color: rgba(217, 164, 65, 0.2);
+    color: #8a6d00;
+}
+
+.agotado {
+    background-color: rgba(200, 90, 100, 0.2);
+    color: #a32038;
+}
+
+#resumen,
+#productos {
+    margin-bottom: 48px;
+}
+
+/* Organiza los campos de búsqueda y filtro */
+.filtros-productos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+}
+
+.filtros-productos label {
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+/* Da estilo a la caja de búsqueda y al menú */
+.filtros-productos input, 
+.filtros-productos select{
+    padding: 10px;
+    border: 1px solid var(--borde-vidrio);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+}
+
+/* Separa el resumen del resto de la página */
+.resumen{
+    margin: 24px 0;
+}
+
+/* Coloca las tarjetas del resumen en columnas */
+.tarjetas-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Estilo individual de cada tarjeta */
+.tarjeta-resumen {
+    padding: 16px;
+    text-align: center;
+}
+
+/* Destaca el número de cada tarjeta */
+.tarjetas-resumen p {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+/* Adapta el resumen a pantallas pequeñas */
+@media (max-width:600px) {
+    .tarjetas-resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .encabezado {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .encabezado nav {
+        flex-wrap: wrap;
+        gap: 12px
+    }
+}
+
+/* Organiza el panel en dos columnas */
+.diseno-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+
+/* Estilo del menú lateral */
+.barra-lateral {
+    flex: 0 0 240px;
+    min-width: 0;
+    padding: 15px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+    transition: flex-basis 0.3s ease;
+
+}
+
+/* El contenido ocupa el espacio restante */
+.contenido-panel {
+    flex: 1;
+    min-width: 0;
+}
+
+.panel-lateral summary{
+    cursor: pointer;
+    color: var(--texto);
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    list-style-position: inside;
+    background-color: transparent;
+}
+
+/* Organiza los enlaces del menú lateral */
+.barra-lateral nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* Estilo de los enlaces laterales */
+.barra-lateral a{
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--texto);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+    background-color: transparent;
+
+}
+
+.barra-lateral:has(.panel-lateral:not([open])){
+    flex-basis: 70px;
+    padding: 8px;
+}
+
+.barra-lateral:has(.panel-lateral:not([open])) .panel-lateral summary {
+font-size: 0;
+text-align: center;
+}
+
+.barra-lateral:has(.panel-lateral:not([open])) .panel-lateral summary::before {
+content: "☰";
+font-size: 25px;
+}
+/* Efecto al pasar el cursor */
+.barra-lateral a:hover {
+    color:var(--texto);
+}
+
+/* En móviles, coloca el menú encima del contenido */
+@media (max-width: 700px) {
+    .barra-lateral {
+flex-basis: auto;
+width: 100%;
+    }
+
+    .barra-lateral:has(.panel-lateral:not([open])) {
+    flex-basis: auto;
+    width: 100%;
+}
+
+    
+}
+
+
+/* Da un tamaño uniforme a las fotos de los productos */
+.imagen-producto {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 14px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
+}
+
+/* En pantallas grandes, damos más espacio a las fotos */
+@media (min-width: 1000px) {
+    .imagen-producto {
+        height: 240px;
+    }
+}
+
+/* Estilo uniforme para los botones */
+.boton-detalles,
+.boton-bienvenida {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 46px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    background-color: var(--texto);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    
+}
+
+/* Botones de las tarjetas */
+.boton-detalles {
+    margin-top: 14px;
+    transition: background-color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.boton-bienvenida:hover,
+.boton-detalles:hover {
+    background-color: var(--acento);
+    color: var(--texto);
+    transform: translateY(-1px);
+}
+
+/* Si la tarjeta tiene varios elementos, evita espacios irregulares */
+.producto {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.producto .boton-detalles {
+    max-width: 100%;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 500px) {
+    .boton-detalles,
+    .boton-bienvenida {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+
+/* Secciones de detalles de los productos */
+.detalles-producto {
+    padding: 25px;
+    margin: 35px auto;
+    max-width: 700px;
+    box-sizing: border-box;
+    scroll-margin-top: 100px;
+    display: none;
+
+}
+
+.detalles-producto:target {
+    display: block;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    z-index: 100;
+    width: min(90vw, 520px);
+    max-height: 85vh;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 0 0 100vmax rgba(58, 48, 51, 0.35);
+    animation: aparecer 0.3s ease;
+}
+
+/*restalta la imagen*/
+.detalles-producto:target .imagen-producto {
+    max-width: 100%;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 30px rgba(60, 40, 50, 0.15);
+    padding: 12px;
+}
+
+/* animacion de entrada*/
+@keyframes aparecer {
+    from { opacity: 0; scale: 0.96; }
+    to   { opacity: 1; scale: 1; }
+}
+
+/* Títulos de los detalles */
+.detalles-producto .imagen-producto {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    height: 280px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+}
+
+/* Texto de los detalles */
+.detalles-producto p{
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Botón para volver a los productos */
+.detalles-producto .boton-detalles {
+    margin-top: 10px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 500px){
+    .detalles-producto{
+        padding: 18px;
+        margin: 25px 10px;
+    }
+
+    .detalles-producto .imagen-producto {
+        height:220px;
+    }
+    .detalles-producto:target {
+    margin: auto;
+    }
+}
+
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+    .vidrio, .encabezado {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 28px;
+    max-width: 700px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.campo-ancho,
+.terminos,
+.formulario button {
+    grid-column: 1 / -1;
+    justify-self: start;
+}
+
+.formulario label,
+.formulario legend {
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="number"],
+.formulario select,
+.formulario textarea {
+    padding: 10px;
+    border: 1px solid var(--borde-vidrio);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+}
+
+.formulario fieldset label,
+.terminos {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pie {
+    width: calc(100% - 64px);
+    max-width: 1100px;
+    margin:48px auto 32px;
+    padding: 28px 24px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+@media (max-width: 600px) {
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+}
+
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+.pie p{
+    margin: 4px 0;
+}
+
+.pie-marca {
+    font-family: var(--fuente-titulo);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.pie-texto {
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.pie-copy {
+    font-size: 12px;
+    color: var(--texto-suave);
+}

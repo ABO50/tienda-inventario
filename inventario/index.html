@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Rosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+    <!--Encabezado de pagina-->
+    <header class="encabezado"> 
+        <a href="#" class="logo">Atelier Rosa</a>
+
+        <!--Menu de navegacion-->
+        <nav>
+            <a href="#resumen">Resumen</a>
+            <a href="#productos">Productos</a>
+            <a href="#pedido">Pedido</a>
+        </nav>
+
+    </header>
+
+    <!--Contenido Principal-->
+    <main>
+        
+        <!--Bienvenida-->
+
+        <section class="bienvenida vidrio">
+            <p class="etiqueta-bienvenida">ATELIER ROSA · MODA Y ESTILO</p>
+
+            <h1>Tu estilo, con un toque de elegancia</h1>
+            <p class="texto-bienvenida">
+                Descubre nuestras prendas y encuentra el look perfecto para ti.
+            </p>
+
+            <a href="#productos" class="boton-bienvenida"> Explorar productos</a>
+        </section>
+
+        <!--Menu lateral-->
+        <div class="diseno-panel">
+
+        <aside class="barra-lateral vidrio">
+            <details class="panel-lateral" open>
+                <summary>☰ Menú de navegación</summary>
+                <nav>
+                    <a href="#resumen">Resumen</a>
+                    <a href="#productos">Productos</a>
+                    <a href="#detalles-blusa">Blusa con flores</a>
+                    <a href="#vestido-cerezo">Vestido color cerezo</a>
+                    <a href="#bolsa-lino">Bolsa de lino</a>
+
+                    <a href="#pedido">Pedido</a>
+                </nav>
+                </details>
+        </aside>
+
+        <div class="contenido-panel">
+
+        <section id="resumen">
+            <h2>Nuestro catálogo</h2>
+            <p>Prendas y accesorios para cada ocasión</p>
+        </section>
+
+        <!-- Herramientas para buscar y filtrar productos -->
+        <form class="filtros-productos vidrio" action="#productos" method="get">
+            <label for="buscar">Buscar una prenda</label>
+            <input type="search" id="buscar" name="buscar" placeholder="Ej. vestido rosa">
+
+            <label for="filtro-stock">Filtrar por stock</label>
+            <select id="filtro-stock" name="stock">
+                <option value="todos">Todos los productos</option>
+                <option value="disponible">Disponible</option>
+                <option value="bajo">Stock bajo</option>
+                <option value="agotado">Agotado</option>
+            </select>
+
+            <button type="submit" class="boton-detalles">Buscar</button>
+
+        </form>
+
+
+         <!-- Resumen general del inventario -->
+          <section class="resumen">
+            <h2>Resumen de Inventario</h2>
+
+            <div class="tarjetas-resumen">
+                <article class="tarjeta-resumen vidrio">
+                    <h3>Productos</h3>
+                    <p>3</p>
+                </article>
+
+                <article class="tarjeta-resumen vidrio">
+                    <h3>Disponible</h3>
+                    <p>2</p>
+                </article>
+
+                <article class="tarjeta-resumen vidrio">
+                    <h3>Agotados</h3>
+                    <p>1</p>
+                </article>
+            </div>
+          </section>
+
+
+        <section id="productos">
+            <h2>Mis Productos</h2>
+
+            <div class="rejilla-productos">     <!-- Aquí agrupamos todas las tarjetas -->
+
+                   <!-- primera tarjeta -->
+                    <article class="producto vidrio">
+                        <img
+                        src="img/blusa-flores.jpg"
+                        alt="Blusa con estampado de flores"
+                        class="imagen-producto"
+                        >
+
+                        <h3>Blusa Flor</h3>
+                        <p>Precio: $320</p>
+                        <p>Existencia: 24 piezas</p>
+
+                        <span class="disponible">Disponible</span>
+
+                        <a href="#detalles-blusa" class="boton-detalles">
+                            Ver detalles
+                        </a>
+                    </article>
+
+                     <!-- seg. targ -->
+                    <article class="producto vidrio">
+                                                <img
+                        src="img/vestido-cerezo.jpg"
+                        alt="Vestido color cerezo"
+                        class="imagen-producto"
+                        >
+                        <h3>Vestido Cerezo</h3>
+                        <p>Precio: $752</p>
+                        <p>Existencia: 0 piezas</p>
+
+                        <span class="agotado">Agotado</span>
+
+                        <a href="#vestido-cerezo" class="boton-detalles">
+                            Ver detalles
+                        </a>
+                    </article>
+
+                    <!-- terc. targ -->
+                    <article class="producto vidrio">
+                        <img
+                        src="img/bolsa-lino.jpg"
+                        alt="Bolsa de lino"
+                        class="imagen-producto"
+                        >
+                        <h3>Bolsa Lino</h3>
+                        <p>Precio: $390</p>
+                        <p>Existencia: 20 piezas</p>
+
+                        <span class="disponible">Disponible</span>
+
+                        <a href="#bolsa-lino" class="boton-detalles">
+                            Ver detalles
+                        </a>
+                    </article>
+
+                    <!-- cuarta targ -->
+                    <article class="producto vidrio">
+                        <img
+                        src="img/sombrero-paja.jpeg"
+                        alt="Sombrero de Paja"
+                        class="imagen-producto"
+                        >
+                        <h3>Sombrero de Paja</h3>
+                        <p>Precio: $280</p>
+                        <p>Existencia: 3 piezas</p>
+
+                        <span class="bajo">Stock bajo</span>
+
+                        <a href="#sombrero-paja" class="boton-detalles vidrio">
+                            Ver detalles
+                        </a>
+                    </article>
+
+                    <!-- quinta targ -->
+                    <article class="producto vidrio">
+                        <img
+                        src="img/panuelo-seda.jpeg"
+                        alt="panuelo de seda"
+                        class="imagen-producto"
+                        >
+                        <h3>Pañuelo de Seda</h3>
+                        <p>Precio: $190</p>
+                        <p>Existencia: 0 piezas</p>
+
+                        <span class="agotado">Agotado</span>
+
+                        <a href="#panuelo-seda" class="boton-detalles vidrio">
+                            Ver detalles
+                        </a>
+                    </article>
+
+                    <!-- sexta. targ -->
+                    <article class="producto vidrio">
+                        <img
+                        src="img/mini-falda.jpeg"
+                        alt="Mini falda"
+                        class="imagen-producto"
+                        >
+                        <h3>Mini Falda</h3>
+                        <p>Precio: $450</p>
+                        <p>Existencia: 15 piezas</p>
+
+                        <span class="disponible">Disponible</span>
+
+                        <a href="#mini-falda" class="boton-detalles vidrio">
+                            Ver detalles
+                        </a>
+                    </article>
+            </div>
+        </section>
+
+        <section id="pedido">
+    <h2>Haz tu pedido</h2>
+
+    <form class="formulario vidrio" action="#pedido" method="post">
+
+        <div class="campo">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="campo">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" required>
+        </div>
+
+        <div class="campo">
+            <label for="producto">Producto</label>
+            <select id="producto" name="producto" required>
+                <option value="">Elige una opción</option>
+                <option value="blusa">Blusa Flor</option>
+                <option value="bolsa">Bolsa Lino</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="cantidad">Cantidad</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1" required>
+        </div>
+
+        <fieldset class="campo">
+            <legend>Tipo de entrega</legend>
+            <label><input type="radio" name="entrega" value="domicilio" checked> A domicilio</label>
+            <label><input type="radio" name="entrega" value="tienda"> Recoger en tienda</label>
+        </fieldset>
+
+        <div class="campo campo-ancho">
+            <label for="comentarios">Comentarios</label>
+            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Talla, color, notas..."></textarea>
+        </div>
+
+        <label class="terminos">
+            <input type="checkbox" name="terminos" required>
+            Acepto los términos y condiciones
+        </label>
+
+        <button type="submit" class="boton-detalles">Enviar pedido</button>
+    </form>
+</section>
+
+        <!-- Detalles de la blusa -->
+        <section id="detalles-blusa" class="detalles-producto vidrio">
+            <h2>Blusa con flores</h2>
+            <img
+    src="img/blusa-flores.jpg"
+    alt="Blusa con estampado de flores"
+    class="imagen-producto"
+>
+
+<p><strong>Precio:</strong> $320</p>
+<p><strong>Unidades disponibles:</strong> 24</p>
+<p><strong>Descripción:</strong> Blusa ligera con estampado floral, ideal para un look delicado y primaveral.</p>
+
+<a href="#productos" class="boton-detalles">Volver a productos</a>
+
+        </section>
+
+        <!-- Detalles del vestido -->
+        <section id="vestido-cerezo" class="detalles-producto vidrio">
+    <h2>Vestido color cerezo</h2>
+    <img
+    src="img/vestido-cerezo.jpg"
+    alt="Vestido color cerezo"
+    class="imagen-producto"
+>
+
+<p><strong>Precio:</strong> $752</p>
+<p><strong>Unidades disponibles:</strong> 0</p>
+<p><strong>Descripción:</strong> Vestido de color cerezo, perfecto para crear un look elegante y femenino.</p>
+
+<a href="#productos" class="boton-detalles">Volver a productos</a>
+</section>
+
+<!-- Detalles de la bolsa -->
+<section id="bolsa-lino" class="detalles-producto vidrio">
+    <h2>Bolsa de lino</h2>
+
+    <img
+        src="img/bolsa-lino.jpg"
+        alt="Bolsa de lino"
+        class="imagen-producto"
+    >
+
+    <p><strong>Precio:</strong> $390</p>
+    <p><strong>Unidades disponibles:</strong> 20</p>
+    <p><strong>Descripción:</strong> Bolsa de lino ligera y versátil, ideal para acompañarte en tu día a día.</p>
+
+    <a href="#productos" class="boton-detalles">Volver a productos</a>
+</section>
+
+<section id="sombrero-paja" class="detalles-producto">
+    <h2>Sombrero de Paja</h2>
+    <img src="img/sombrero-paja.jpeg" alt="Sombrero de paja" class="imagen-producto">
+    <p><strong>Precio:</strong> $280</p>
+    <p><strong>Unidades disponibles:</strong> 3</p>
+    <p><strong>Description:</strong> Sombrero de paja ligero, ideal para días soleados.</p>
+    <a href="#productos" class="boton-detalles">Volver a productos</a>
+
+</section>
+
+
+<section id="panuelo-seda" class="detalles-producto">
+    <h2>Pañuelo de Seda</h2>
+    <img src="img/panuelo-seda.jpeg" alt="Panuelo de Seda" class="imagen-producto">
+    <p><strong>Precio:</strong> $190</p>
+    <p><strong>Unidades disponibles:</strong> 0</p>
+    <p><strong>Description:</strong> Pañuelo de seda suave, un toque elegante para cualquier look.</p>
+    <a href="#productos" class="boton-detalles">Volver a productos</a>
+
+</section>
+
+<section id="mini-falda" class="detalles-producto vidrio">
+    <h2>Mini falda</h2>
+    <img src="img/mini-falda.jpeg" alt="mini-falda" class="imagen-producto">
+    <p><strong>Precio:</strong> $450</p>
+    <p><strong>Unidades disponibles:</strong> 15</p>
+    <p><strong>Description:</strong> Mini falda versátil y cómoda, perfecta para el día a día.</p>
+    <a href="#productos" class="boton-detalles">Volver a productos</a>
+
+</section>
+
+        </div>
+        </div>
+    </main>
+<!--Pie de pagina-->
+<footer class="pie vidrio">
+    <p class="pie-marca">Atelier Rosa</p>
+    <p class="pie-texto">Moda, accesorios y estilo</p>
+    <p class="pie-copy">© 2026 Atelier Rosa. Todos los derechos reservados.</p>
+</footer>
+
+
+</body>
+</html>
