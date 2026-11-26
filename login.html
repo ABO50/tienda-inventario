@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión · Atelier Rosa</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body class="pagina-login">
+
+    <main class="tarjeta-login vidrio">
+        <a href="index.html" class="logo-login">Atelier Rosa</a>
+
+        <h1 class="login__titulo">Iniciar sesión</h1>
+        <p id="subtitulo-login" class="subtitulo-login">Entra para administrar tu inventario.</p>
+        
+        <form id="formulario-login" class="formulario-login" action="procesar_login.php" method="POST">
+
+            <div class="campo">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" autocomplete="email" required>
+            </div>
+
+            <div class="campo">
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" class="login__input" autocomplete="current-password" minlength="6" required>
+            </div>
+        <!-- Mensaje de error -->
+         <p id="mensaje" class="mensaje" role="alert" aria-live="polite"></p>
+            <button type="submit" class="login__boton">Iniciar sesión</button>
+        </form>
+
+        <p class="cambiar-modo">
+            <span id="texto-cambiar">¿Aún no tienes cuenta?</span>
+            <button type="button" id="boton-cambiar" class="enlace-boton">Crear cuenta</button>
+        </p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
