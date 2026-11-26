@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva contraseña · Atelier Rosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="pagina-login">
+
+    <main class="tarjeta-login vidrio">
+        <a href="login.html" class="logo-login">Atelier Rosa</a>
+
+        <h1>Nueva contraseña</h1>
+        <p class="subtitulo-login">Escribe la contraseña que usarás para entrar.</p>
+
+        <p id="mensaje" class="mensaje exito" role="alert" aria-live="polite">Verificando enlace...</p>
+
+        <form id="formulario-reset" class="formulario-login" hidden novalidate>
+
+            <div class="campo">
+                <label for="nueva">Nueva contraseña</label>
+                <div class="campo-contrasena">
+                    <input type="password" id="nueva" autocomplete="new-password" minlength="6" required>
+                    <button type="button" class="ver-contrasena" data-ver-contrasena="nueva" aria-pressed="false" aria-label="Mostrar contraseña">Mostrar</button>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="confirmar">Confirmar contraseña</label>
+                <div class="campo-contrasena">
+                    <input type="password" id="confirmar" autocomplete="new-password" minlength="6" required>
+                    <button type="button" class="ver-contrasena" data-ver-contrasena="confirmar" aria-pressed="false" aria-label="Mostrar contraseña">Mostrar</button>
+                </div>
+            </div>
+
+            <button type="submit" id="boton-guardar-contrasena" class="boton-detalles">Guardar contraseña</button>
+        </form>
+
+        <p class="cambiar-modo">
+            <a href="login.html" class="enlace-boton">Volver a iniciar sesión</a>
+        </p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/ver-contrasena.js"></script>
+    <script src="js/reset.js"></script>
+</body>
+</html>
