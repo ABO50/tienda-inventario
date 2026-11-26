@@ -237,7 +237,10 @@ p{
 }
 
 #resumen,
-#productos {
+#productos,
+#administrar,
+#venta,
+#ventas {
     margin-bottom: 48px;
 }
 
@@ -275,7 +278,7 @@ p{
 /* Coloca las tarjetas del resumen en columnas */
 .tarjetas-resumen {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 16px;
 }
 
@@ -295,7 +298,7 @@ p{
 /* Adapta el resumen a pantallas pequeñas */
 @media (max-width:600px) {
     .tarjetas-resumen {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .encabezado {
@@ -663,4 +666,433 @@ summary:focus-visible {
 .pie-copy {
     font-size: 12px;
     color: var(--texto-suave);
+}
+
+/* Sesión del usuario en el encabezado */
+.sesion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.correo-usuario {
+    font-size: 14px;
+    color: var(--texto-suave);
+    overflow-wrap: anywhere;
+}
+
+.boton-salir {
+    padding: 8px 16px;
+    border: 1px solid var(--texto);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--texto);
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton-salir:hover {
+    background-color: var(--acento);
+    border-color: var(--acento);
+}
+
+.boton-salir:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+/* Página de inicio de sesión */
+.pagina-login {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.tarjeta-login {
+    width: 100%;
+    max-width: 420px;
+    padding: 36px 32px;
+    box-sizing: border-box;
+}
+
+.logo-login {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-family: var(--fuente-titulo);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.tarjeta-login h1 {
+    margin: 0 0 6px;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+.subtitulo-login {
+    margin: 0 0 24px;
+    color: var(--texto-suave);
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.formulario-login label {
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.formulario-login input {
+    padding: 10px;
+    border: 1px solid var(--borde-vidrio);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+}
+
+.formulario-login .boton-detalles {
+    margin-top: 4px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.formulario-login .boton-detalles:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.mensaje {
+    min-height: 1.5em;
+    margin: 0;
+    font-size: 14px;
+}
+
+.mensaje.error {
+    color: #a32038;
+}
+
+.mensaje.exito {
+    color: #3f6b52;
+}
+
+.cambiar-modo {
+    margin: 22px 0 0;
+    text-align: center;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.enlace-boton {
+    border: 0;
+    background: none;
+    padding: 0;
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--texto);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.enlace-boton:hover {
+    color: var(--acento);
+}
+
+.enlace-boton:focus-visible,
+.logo-login:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+@media (max-width: 500px) {
+    .tarjeta-login {
+        padding: 28px 20px;
+    }
+}
+
+
+/* ===================================================
+   Panel de administración
+   =================================================== */
+
+/* Botones de acción en la bienvenida */
+.acciones-bienvenida {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* Imagen de producto cuando no tiene foto */
+.sin-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+/* Botones de cada tarjeta de producto */
+.acciones-producto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.acciones-producto .boton-detalles {
+    margin-top: 0;
+    min-height: 38px;
+    padding: 8px 14px;
+}
+
+.boton-secundario,
+.boton-peligro {
+    min-height: 38px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: transparent;
+    font-family: var(--fuente-texto);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton-secundario {
+    border: 1px solid var(--texto);
+    color: var(--texto);
+}
+
+.boton-secundario:hover {
+    background-color: var(--acento);
+    border-color: var(--acento);
+}
+
+.boton-peligro {
+    border: 1px solid #a32038;
+    color: #a32038;
+}
+
+.boton-peligro:hover {
+    background-color: #a32038;
+    color: white;
+}
+
+.boton-secundario:focus-visible,
+.boton-peligro:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+/* Los campos anchos de los formularios ocupan todo el ancho */
+.formulario .campo-ancho {
+    justify-self: stretch;
+}
+
+.formulario textarea,
+.formulario .campo-ancho input:not([type="radio"]) {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.formulario .mensaje {
+    margin: 0;
+}
+
+.resumen-venta {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Fieldset de entrega en fila */
+.formulario fieldset.campo {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 24px;
+}
+
+.formulario fieldset legend {
+    padding: 0;
+    margin-bottom: 6px;
+}
+
+/* Historial de ventas */
+.total-vendido {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 16px;
+}
+
+/* El contenedor permite desplazar la tabla en celulares */
+.tabla-contenedor {
+    overflow-x: auto;
+    padding: 8px;
+}
+
+.tabla-ventas {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.tabla-ventas th,
+.tabla-ventas td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--borde-vidrio);
+}
+
+.tabla-ventas th {
+    font-weight: 500;
+    color: var(--texto-suave);
+    white-space: nowrap;
+}
+
+.tabla-ventas tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabla-ventas .sin-ventas {
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+/* Campo de contraseña con botón de mostrar */
+.campo-contrasena {
+    position: relative;
+    display: flex;
+}
+
+.campo-contrasena input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 84px;
+}
+
+.ver-contrasena {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: none;
+    font-family: var(--fuente-texto);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    cursor: pointer;
+}
+
+.ver-contrasena:hover {
+    color: var(--texto);
+}
+
+.ver-contrasena:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+.enlace-olvide {
+    align-self: flex-start;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+/* El atributo hidden debe ganar sobre display: flex / grid */
+[hidden] {
+    display: none !important;
+}
+
+/* ===================================================
+   Ajustes para pantallas pequeñas
+   (van al final para que ganen sobre las reglas anteriores)
+   =================================================== */
+
+/* El menú lateral pasa arriba y el contenido va debajo */
+@media (max-width: 700px) {
+    .diseno-panel {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .contenido-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 16px;
+    }
+
+    /* El encabezado deja de quedarse fijo: ocupa demasiado espacio en celular */
+    .encabezado {
+        position: static;
+        padding: 14px 16px;
+    }
+
+    .sesion {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* La última tarjeta del resumen ocupa todo el ancho */
+    .tarjeta-resumen:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Buscador y filtro a todo el ancho */
+    .filtros-productos input,
+    .filtros-productos select,
+    .filtros-productos .boton-detalles {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Formularios: campos y botones a todo el ancho */
+    .formulario {
+        padding: 18px;
+    }
+
+    .formulario input[type="text"],
+    .formulario input[type="email"],
+    .formulario input[type="number"],
+    .formulario select,
+    .formulario textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .formulario button {
+        width: 100%;
+        justify-self: stretch;
+    }
+
+    .acciones-bienvenida .boton-bienvenida {
+        width: 100%;
+    }
+
+    .pie {
+        width: calc(100% - 32px);
+    }
 }

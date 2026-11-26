@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atelier Rosa</title>
+    <title>Panel de inventario · Atelier Rosa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,359 +11,253 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body>
     <!--Encabezado de pagina-->
-    <header class="encabezado"> 
+    <header class="encabezado">
         <a href="#" class="logo">Atelier Rosa</a>
 
         <!--Menu de navegacion-->
         <nav>
             <a href="#resumen">Resumen</a>
-            <a href="#productos">Productos</a>
-            <a href="#pedido">Pedido</a>
+            <a href="#productos">Inventario</a>
+            <a href="#venta">Registrar venta</a>
+            <a href="#ventas">Ventas</a>
         </nav>
 
+        <!--Sesion del administrador-->
+        <div class="sesion">
+            <span id="correo-usuario" class="correo-usuario"></span>
+            <button type="button" id="boton-salir" class="boton-salir">Cerrar sesión</button>
+        </div>
     </header>
 
     <!--Contenido Principal-->
     <main>
-        
-        <!--Bienvenida-->
 
+        <!--Bienvenida del panel-->
         <section class="bienvenida vidrio">
-            <p class="etiqueta-bienvenida">ATELIER ROSA · MODA Y ESTILO</p>
+            <p class="etiqueta-bienvenida">PANEL DE ADMINISTRACIÓN</p>
 
-            <h1>Tu estilo, con un toque de elegancia</h1>
+            <h1>Inventario y ventas</h1>
             <p class="texto-bienvenida">
-                Descubre nuestras prendas y encuentra el look perfecto para ti.
+                Controla tus productos, existencias y ventas en un solo lugar.
             </p>
 
-            <a href="#productos" class="boton-bienvenida"> Explorar productos</a>
+            <div class="acciones-bienvenida">
+                <a href="#administrar" class="boton-bienvenida">Agregar producto</a>
+                <a href="#venta" class="boton-bienvenida">Registrar venta</a>
+            </div>
         </section>
 
-        <!--Menu lateral-->
         <div class="diseno-panel">
 
-        <aside class="barra-lateral vidrio">
-            <details class="panel-lateral" open>
-                <summary>☰ Menú de navegación</summary>
-                <nav>
-                    <a href="#resumen">Resumen</a>
-                    <a href="#productos">Productos</a>
-                    <a href="#detalles-blusa">Blusa con flores</a>
-                    <a href="#vestido-cerezo">Vestido color cerezo</a>
-                    <a href="#bolsa-lino">Bolsa de lino</a>
-
-                    <a href="#pedido">Pedido</a>
-                </nav>
+            <!--Menu lateral-->
+            <aside class="barra-lateral vidrio">
+                <details class="panel-lateral" open>
+                    <summary>☰ Menú de navegación</summary>
+                    <nav>
+                        <a href="#resumen">Resumen</a>
+                        <a href="#productos">Inventario</a>
+                        <a href="#administrar">Agregar producto</a>
+                        <a href="#venta">Registrar venta</a>
+                        <a href="#ventas">Historial de ventas</a>
+                    </nav>
                 </details>
-        </aside>
+            </aside>
 
-        <div class="contenido-panel">
+            <div class="contenido-panel">
 
-        <section id="resumen">
-            <h2>Nuestro catálogo</h2>
-            <p>Prendas y accesorios para cada ocasión</p>
-        </section>
+                <!-- Resumen general del inventario -->
+                <section id="resumen">
+                    <h2>Resumen del inventario</h2>
 
-        <!-- Herramientas para buscar y filtrar productos -->
-        <form class="filtros-productos vidrio" action="#productos" method="get">
-            <label for="buscar">Buscar una prenda</label>
-            <input type="search" id="buscar" name="buscar" placeholder="Ej. vestido rosa">
+                    <div class="tarjetas-resumen">
+                        <article class="tarjeta-resumen vidrio">
+                            <h3>Productos</h3>
+                            <p id="resumen-total">0</p>
+                        </article>
 
-            <label for="filtro-stock">Filtrar por stock</label>
-            <select id="filtro-stock" name="stock">
-                <option value="todos">Todos los productos</option>
-                <option value="disponible">Disponible</option>
-                <option value="bajo">Stock bajo</option>
-                <option value="agotado">Agotado</option>
-            </select>
+                        <article class="tarjeta-resumen vidrio">
+                            <h3>Disponibles</h3>
+                            <p id="resumen-disponibles">0</p>
+                        </article>
 
-            <button type="submit" class="boton-detalles">Buscar</button>
+                        <article class="tarjeta-resumen vidrio">
+                            <h3>Stock bajo</h3>
+                            <p id="resumen-bajo">0</p>
+                        </article>
 
-        </form>
+                        <article class="tarjeta-resumen vidrio">
+                            <h3>Agotados</h3>
+                            <p id="resumen-agotados">0</p>
+                        </article>
 
+                        <article class="tarjeta-resumen vidrio">
+                            <h3>Valor del inventario</h3>
+                            <p id="resumen-valor">$0</p>
+                        </article>
+                    </div>
+                </section>
 
-         <!-- Resumen general del inventario -->
-          <section class="resumen">
-            <h2>Resumen de Inventario</h2>
+                <!-- Inventario: busqueda, filtro y lista de productos -->
+                <section id="productos">
+                    <h2>Inventario</h2>
 
-            <div class="tarjetas-resumen">
-                <article class="tarjeta-resumen vidrio">
-                    <h3>Productos</h3>
-                    <p>3</p>
-                </article>
+                    <form class="filtros-productos vidrio" id="formulario-filtros">
+                        <label for="buscar">Buscar un producto</label>
+                        <input type="search" id="buscar" name="buscar" placeholder="Ej. vestido">
 
-                <article class="tarjeta-resumen vidrio">
-                    <h3>Disponible</h3>
-                    <p>2</p>
-                </article>
+                        <label for="filtro-stock">Filtrar por stock</label>
+                        <select id="filtro-stock" name="stock">
+                            <option value="todos">Todos los productos</option>
+                            <option value="disponible">Disponible</option>
+                            <option value="bajo">Stock bajo</option>
+                            <option value="agotado">Agotado</option>
+                        </select>
 
-                <article class="tarjeta-resumen vidrio">
-                    <h3>Agotados</h3>
-                    <p>1</p>
-                </article>
+                        <button type="submit" class="boton-detalles">Buscar</button>
+                    </form>
+
+                    <div class="rejilla-productos" id="rejilla-productos"></div>
+                </section>
+
+                <!-- Alta y edicion de productos -->
+                <section id="administrar">
+                    <h2 id="titulo-admin">Agregar producto</h2>
+
+                    <form class="formulario vidrio" id="formulario-producto" novalidate>
+                        <input type="hidden" id="producto-id">
+
+                        <div class="campo">
+                            <label for="prod-nombre">Nombre</label>
+                            <input type="text" id="prod-nombre" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="prod-precio">Precio</label>
+                            <input type="number" id="prod-precio" min="0" step="0.01" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="prod-existencia">Existencia</label>
+                            <input type="number" id="prod-existencia" min="0" step="1" value="0" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="prod-imagen">Imagen (ruta o enlace)</label>
+                            <input type="text" id="prod-imagen" placeholder="img/blusa-flores.jpg">
+                        </div>
+
+                        <div class="campo campo-ancho">
+                            <label for="prod-descripcion">Descripción</label>
+                            <textarea id="prod-descripcion" rows="3"></textarea>
+                        </div>
+
+                        <p id="mensaje-producto" class="mensaje campo-ancho" role="alert" aria-live="polite"></p>
+
+                        <button type="submit" id="boton-guardar" class="boton-detalles">Guardar producto</button>
+                        <button type="button" id="boton-cancelar" class="boton-secundario" hidden>Cancelar edición</button>
+                    </form>
+                </section>
+
+                <!-- Registro de ventas -->
+                <section id="venta">
+                    <h2>Registrar venta</h2>
+
+                    <form class="formulario vidrio" id="formulario-venta" novalidate>
+
+                        <div class="campo">
+                            <label for="producto">Producto</label>
+                            <select id="producto" name="producto" required>
+                                <option value="">Elige una opción</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="cantidad">Cantidad</label>
+                            <input type="number" id="cantidad" name="cantidad" min="1" step="1" value="1" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="cliente-nombre">Nombre del cliente</label>
+                            <input type="text" id="cliente-nombre" name="cliente-nombre" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="cliente-correo">Correo del cliente (opcional)</label>
+                            <input type="email" id="cliente-correo" name="cliente-correo">
+                        </div>
+
+                        <fieldset class="campo campo-ancho">
+                            <legend>Tipo de entrega</legend>
+                            <label><input type="radio" name="entrega" value="tienda" checked> En tienda</label>
+                            <label><input type="radio" name="entrega" value="domicilio"> A domicilio</label>
+                        </fieldset>
+
+                        <div class="campo campo-ancho" id="campo-direccion">
+                            <label for="direccion">Dirección de entrega</label>
+                            <input type="text" id="direccion" name="direccion" placeholder="Calle, número, colonia, ciudad">
+                        </div>
+
+                        <div class="campo campo-ancho">
+                            <label for="comentarios">Notas (opcional)</label>
+                            <textarea id="comentarios" name="comentarios" rows="3" placeholder="Talla, color, notas..."></textarea>
+                        </div>
+
+                        <p id="resumen-venta" class="resumen-venta campo-ancho"></p>
+                        <p id="mensaje-venta" class="mensaje campo-ancho" role="alert" aria-live="polite"></p>
+
+                        <button type="submit" id="boton-venta" class="boton-detalles">Registrar venta</button>
+                    </form>
+                </section>
+
+                <!-- Historial de ventas -->
+                <section id="ventas">
+                    <h2>Ventas realizadas</h2>
+                    <p id="total-vendido" class="total-vendido"></p>
+
+                    <div class="tabla-contenedor vidrio">
+                        <table class="tabla-ventas">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th>Cliente</th>
+                                    <th>Entrega</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo-ventas"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Ventana de detalles (una sola, se llena con JavaScript) -->
+                <section id="detalles-producto" class="detalles-producto vidrio">
+                    <h2 id="detalle-nombre"></h2>
+                    <img id="detalle-imagen" src="" alt="" class="imagen-producto">
+                    <p><strong>Precio:</strong> <span id="detalle-precio"></span></p>
+                    <p><strong>Unidades disponibles:</strong> <span id="detalle-existencia"></span></p>
+                    <p><strong>Descripción:</strong> <span id="detalle-descripcion"></span></p>
+                    <a href="#productos" class="boton-detalles">Volver al inventario</a>
+                </section>
+
             </div>
-          </section>
-
-
-        <section id="productos">
-            <h2>Mis Productos</h2>
-
-            <div class="rejilla-productos">     <!-- Aquí agrupamos todas las tarjetas -->
-
-                   <!-- primera tarjeta -->
-                    <article class="producto vidrio">
-                        <img
-                        src="img/blusa-flores.jpg"
-                        alt="Blusa con estampado de flores"
-                        class="imagen-producto"
-                        >
-
-                        <h3>Blusa Flor</h3>
-                        <p>Precio: $320</p>
-                        <p>Existencia: 24 piezas</p>
-
-                        <span class="disponible">Disponible</span>
-
-                        <a href="#detalles-blusa" class="boton-detalles">
-                            Ver detalles
-                        </a>
-                    </article>
-
-                     <!-- seg. targ -->
-                    <article class="producto vidrio">
-                                                <img
-                        src="img/vestido-cerezo.jpg"
-                        alt="Vestido color cerezo"
-                        class="imagen-producto"
-                        >
-                        <h3>Vestido Cerezo</h3>
-                        <p>Precio: $752</p>
-                        <p>Existencia: 0 piezas</p>
-
-                        <span class="agotado">Agotado</span>
-
-                        <a href="#vestido-cerezo" class="boton-detalles">
-                            Ver detalles
-                        </a>
-                    </article>
-
-                    <!-- terc. targ -->
-                    <article class="producto vidrio">
-                        <img
-                        src="img/bolsa-lino.jpg"
-                        alt="Bolsa de lino"
-                        class="imagen-producto"
-                        >
-                        <h3>Bolsa Lino</h3>
-                        <p>Precio: $390</p>
-                        <p>Existencia: 20 piezas</p>
-
-                        <span class="disponible">Disponible</span>
-
-                        <a href="#bolsa-lino" class="boton-detalles">
-                            Ver detalles
-                        </a>
-                    </article>
-
-                    <!-- cuarta targ -->
-                    <article class="producto vidrio">
-                        <img
-                        src="img/sombrero-paja.jpeg"
-                        alt="Sombrero de Paja"
-                        class="imagen-producto"
-                        >
-                        <h3>Sombrero de Paja</h3>
-                        <p>Precio: $280</p>
-                        <p>Existencia: 3 piezas</p>
-
-                        <span class="bajo">Stock bajo</span>
-
-                        <a href="#sombrero-paja" class="boton-detalles vidrio">
-                            Ver detalles
-                        </a>
-                    </article>
-
-                    <!-- quinta targ -->
-                    <article class="producto vidrio">
-                        <img
-                        src="img/panuelo-seda.jpeg"
-                        alt="panuelo de seda"
-                        class="imagen-producto"
-                        >
-                        <h3>Pañuelo de Seda</h3>
-                        <p>Precio: $190</p>
-                        <p>Existencia: 0 piezas</p>
-
-                        <span class="agotado">Agotado</span>
-
-                        <a href="#panuelo-seda" class="boton-detalles vidrio">
-                            Ver detalles
-                        </a>
-                    </article>
-
-                    <!-- sexta. targ -->
-                    <article class="producto vidrio">
-                        <img
-                        src="img/mini-falda.jpeg"
-                        alt="Mini falda"
-                        class="imagen-producto"
-                        >
-                        <h3>Mini Falda</h3>
-                        <p>Precio: $450</p>
-                        <p>Existencia: 15 piezas</p>
-
-                        <span class="disponible">Disponible</span>
-
-                        <a href="#mini-falda" class="boton-detalles vidrio">
-                            Ver detalles
-                        </a>
-                    </article>
-            </div>
-        </section>
-
-        <section id="pedido">
-    <h2>Haz tu pedido</h2>
-
-    <form class="formulario vidrio" action="#pedido" method="post">
-
-        <div class="campo">
-            <label for="nombre">Nombre completo</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-
-        <div class="campo">
-            <label for="correo">Correo electrónico</label>
-            <input type="email" id="correo" name="correo" required>
-        </div>
-
-        <div class="campo">
-            <label for="producto">Producto</label>
-            <select id="producto" name="producto" required>
-                <option value="">Elige una opción</option>
-                <option value="blusa">Blusa Flor</option>
-                <option value="bolsa">Bolsa Lino</option>
-            </select>
-        </div>
-
-        <div class="campo">
-            <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1" required>
-        </div>
-
-        <fieldset class="campo">
-            <legend>Tipo de entrega</legend>
-            <label><input type="radio" name="entrega" value="domicilio" checked> A domicilio</label>
-            <label><input type="radio" name="entrega" value="tienda"> Recoger en tienda</label>
-        </fieldset>
-
-        <div class="campo campo-ancho">
-            <label for="comentarios">Comentarios</label>
-            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Talla, color, notas..."></textarea>
-        </div>
-
-        <label class="terminos">
-            <input type="checkbox" name="terminos" required>
-            Acepto los términos y condiciones
-        </label>
-
-        <button type="submit" class="boton-detalles">Enviar pedido</button>
-    </form>
-</section>
-
-        <!-- Detalles de la blusa -->
-        <section id="detalles-blusa" class="detalles-producto vidrio">
-            <h2>Blusa con flores</h2>
-            <img
-    src="img/blusa-flores.jpg"
-    alt="Blusa con estampado de flores"
-    class="imagen-producto"
->
-
-<p><strong>Precio:</strong> $320</p>
-<p><strong>Unidades disponibles:</strong> 24</p>
-<p><strong>Descripción:</strong> Blusa ligera con estampado floral, ideal para un look delicado y primaveral.</p>
-
-<a href="#productos" class="boton-detalles">Volver a productos</a>
-
-        </section>
-
-        <!-- Detalles del vestido -->
-        <section id="vestido-cerezo" class="detalles-producto vidrio">
-    <h2>Vestido color cerezo</h2>
-    <img
-    src="img/vestido-cerezo.jpg"
-    alt="Vestido color cerezo"
-    class="imagen-producto"
->
-
-<p><strong>Precio:</strong> $752</p>
-<p><strong>Unidades disponibles:</strong> 0</p>
-<p><strong>Descripción:</strong> Vestido de color cerezo, perfecto para crear un look elegante y femenino.</p>
-
-<a href="#productos" class="boton-detalles">Volver a productos</a>
-</section>
-
-<!-- Detalles de la bolsa -->
-<section id="bolsa-lino" class="detalles-producto vidrio">
-    <h2>Bolsa de lino</h2>
-
-    <img
-        src="img/bolsa-lino.jpg"
-        alt="Bolsa de lino"
-        class="imagen-producto"
-    >
-
-    <p><strong>Precio:</strong> $390</p>
-    <p><strong>Unidades disponibles:</strong> 20</p>
-    <p><strong>Descripción:</strong> Bolsa de lino ligera y versátil, ideal para acompañarte en tu día a día.</p>
-
-    <a href="#productos" class="boton-detalles">Volver a productos</a>
-</section>
-
-<section id="sombrero-paja" class="detalles-producto">
-    <h2>Sombrero de Paja</h2>
-    <img src="img/sombrero-paja.jpeg" alt="Sombrero de paja" class="imagen-producto">
-    <p><strong>Precio:</strong> $280</p>
-    <p><strong>Unidades disponibles:</strong> 3</p>
-    <p><strong>Description:</strong> Sombrero de paja ligero, ideal para días soleados.</p>
-    <a href="#productos" class="boton-detalles">Volver a productos</a>
-
-</section>
-
-
-<section id="panuelo-seda" class="detalles-producto">
-    <h2>Pañuelo de Seda</h2>
-    <img src="img/panuelo-seda.jpeg" alt="Panuelo de Seda" class="imagen-producto">
-    <p><strong>Precio:</strong> $190</p>
-    <p><strong>Unidades disponibles:</strong> 0</p>
-    <p><strong>Description:</strong> Pañuelo de seda suave, un toque elegante para cualquier look.</p>
-    <a href="#productos" class="boton-detalles">Volver a productos</a>
-
-</section>
-
-<section id="mini-falda" class="detalles-producto vidrio">
-    <h2>Mini falda</h2>
-    <img src="img/mini-falda.jpeg" alt="mini-falda" class="imagen-producto">
-    <p><strong>Precio:</strong> $450</p>
-    <p><strong>Unidades disponibles:</strong> 15</p>
-    <p><strong>Description:</strong> Mini falda versátil y cómoda, perfecta para el día a día.</p>
-    <a href="#productos" class="boton-detalles">Volver a productos</a>
-
-</section>
-
-        </div>
         </div>
     </main>
-<!--Pie de pagina-->
-<footer class="pie vidrio">
-    <p class="pie-marca">Atelier Rosa</p>
-    <p class="pie-texto">Moda, accesorios y estilo</p>
-    <p class="pie-copy">© 2026 Atelier Rosa. Todos los derechos reservados.</p>
-</footer>
 
+    <!--Pie de pagina-->
+    <footer class="pie vidrio">
+        <p class="pie-marca">Atelier Rosa</p>
+        <p class="pie-texto">Panel de administración de inventario y ventas</p>
+        <p class="pie-copy">© 2026 Atelier Rosa. Todos los derechos reservados.</p>
+    </footer>
 
+    <!--Supabase, sesion y logica del panel-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/sesion.js"></script>
+    <script src="js/inventario.js"></script>
 </body>
 </html>
