@@ -1,12 +1,12 @@
 // =====================================================
-// Panel de inventario y ventas · Atelier Rosa
+// Panel de inventario y ventas
 // Lee y escribe en Supabase (tablas: productos y ventas)
 // =====================================================
 
-// Con esta existencia o menos, el producto aparece como "Stock bajo"
+// Menos de 5 unidades, el producto aparece como "Stock bajo"
 const UMBRAL_STOCK_BAJO = 5;
 
-// Lista de productos en memoria (se usa para buscar, filtrar y mostrar el resumen)
+// Para buscar, filtrar y mostrar el resumen
 let todosLosProductos = [];
 
 // ----- Elementos de la página -----
@@ -56,12 +56,12 @@ function formatoMoneda(valor) {
     return '$' + Number(valor).toLocaleString('es-MX', { maximumFractionDigits: 2 });
 }
 
-// Quita mayúsculas y acentos para que "panuelo" encuentre "Pañuelo"
+// Quita mayúsculas y acentos (ej. "panuelo" encuentre "Pañuelo") 
 function normalizar(texto) {
     return String(texto ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// Decide el estado del producto según su existencia
+// Estado del producto según su existencia
 function obtenerEstado(existencia) {
     if (existencia === 0) return { clase: 'agotado', texto: 'Agotado' };
     if (existencia <= UMBRAL_STOCK_BAJO) return { clase: 'bajo', texto: 'Stock bajo' };

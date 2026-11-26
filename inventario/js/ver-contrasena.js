@@ -1,4 +1,4 @@
-// Cada botón "Mostrar" indica con data-ver-contrasena cuál campo controla
+
 document.querySelectorAll('[data-ver-contrasena]').forEach(boton => {
     const campo = document.getElementById(boton.dataset.verContrasena);
 
